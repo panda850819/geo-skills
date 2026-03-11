@@ -18,6 +18,14 @@ allowed-tools:
 
 > Make content AI-citable during writing, not after. Prevention over remediation.
 
+## References
+
+For platform-specific criteria, citability rubrics, and schema strategy:
+
+```
+knowledge/Marketing/geo-methodology.md
+```
+
 ## When to Use
 
 - Writing a blog post, article, or landing page

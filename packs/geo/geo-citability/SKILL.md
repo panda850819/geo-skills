@@ -19,6 +19,14 @@ allowed-tools:
 
 > Score content for AI citation readiness. How extractable and quotable are your passages?
 
+## References
+
+For full scoring rubrics, AI system citation preferences, and research data:
+
+```
+knowledge/Marketing/geo-methodology.md
+```
+
 ## Core Insight
 
 AI models cite passages that are **extractable** — self-contained, fact-rich, answer-first blocks that make sense without surrounding context. Research (Princeton, Georgia Tech, IIT Delhi 2024) found GEO-optimized content achieves 30-115% higher visibility in AI responses.

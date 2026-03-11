@@ -20,6 +20,14 @@ allowed-tools:
 
 > Generative Engine Optimization audit — score a website's AI search visibility across 6 dimensions.
 
+## References
+
+Before starting, read the methodology reference for scoring rubrics, crawler lists, and platform criteria:
+
+```
+knowledge/Marketing/geo-methodology.md
+```
+
 ## Quick Reference
 
 | Command | What It Does |

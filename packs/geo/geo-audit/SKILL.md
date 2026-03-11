@@ -25,8 +25,10 @@ allowed-tools:
 Before starting, read the methodology reference for scoring rubrics, crawler lists, and platform criteria:
 
 ```
-knowledge/Marketing/geo-methodology.md
+references/geo-methodology.md  (relative to this skill's pack directory)
 ```
+
+The file is located alongside this skill at `packs/geo/references/geo-methodology.md` in the geo-skills repo. If installed via skm, read from the same cache directory as this SKILL.md (replace the skill folder name with `references/`).
 
 ## Quick Reference
 

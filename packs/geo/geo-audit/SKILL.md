@@ -58,6 +58,16 @@ Resolve all paths relative to this SKILL.md's parent directory.
 
 ### Phase 2: Parallel Analysis (5 Subagents)
 
+Pass Phase 1 context to every subagent:
+
+```
+Context to include in each agent prompt:
+- Target URL: [the URL being audited]
+- Business Type: [detected type from Phase 1]
+- Key Pages: [list of up to 20 URLs extracted from sitemap/internal links]
+- Homepage HTML summary: [key meta tags, heading structure, detected schemas]
+```
+
 Spawn 5 agents simultaneously:
 
 ```
@@ -67,6 +77,15 @@ Agent 3: Technical        -> SSR, Core Web Vitals, crawlability, security, mobil
 Agent 4: Content          -> E-E-A-T assessment, content quality, freshness
 Agent 5: Schema           -> JSON-LD detection, validation, sameAs audit, generation
 ```
+
+### Error Handling
+
+| Failure | Action |
+|---------|--------|
+| WebFetch fails for a page | Skip that page, note in report, score based on accessible pages |
+| robots.txt not found | Treat as "no restrictions" (all crawlers allowed), note in report |
+| Subagent times out | Use partial results if available, mark category as "Incomplete" |
+| Site is fully client-rendered | Agent 3 flags as Critical, other agents note limited analysis from raw HTML |
 
 ### Phase 3: Synthesis (Sequential)
 

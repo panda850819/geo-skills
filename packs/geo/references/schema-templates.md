@@ -2,6 +2,19 @@
 
 > JSON-LD templates for GEO, sameAs strategy, deprecated schemas. Used by geo-audit (Agent 5: Schema).
 
+## Table of Contents
+
+1. [Why Structured Data Matters for GEO](#why-structured-data-matters-for-geo)
+2. [Detection and Validation](#detection-and-validation)
+3. [Schema Types and Templates](#schema-types-and-templates) — Organization, Article+Author, Product, LocalBusiness, SoftwareApp, WebSite, FAQPage
+4. [sameAs Strategy](#sameas-strategy-critical-for-entity-recognition) — priority order, audit process
+5. [Deprecated/Changed Schemas](#deprecatedchanged-schemas)
+6. [Business-Type Schema Map](#business-type-schema-map)
+7. [JSON-LD Generation Rules](#json-ld-generation-rules)
+8. [Scoring Rubric (0-100)](#scoring-rubric-0-100)
+
+---
+
 ## Why Structured Data Matters for GEO
 
 Structured data is the primary machine-readable signal that tells AI systems what an entity IS, what it does, and how it connects to other entities. While schema markup has traditionally been about earning Google rich results, its role in GEO is fundamentally different: **structured data is how AI models understand and trust your entity**. A complete entity graph in structured data dramatically increases citation probability across all AI search platforms.

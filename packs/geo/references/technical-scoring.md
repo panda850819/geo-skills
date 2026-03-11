@@ -2,6 +2,22 @@
 
 > 8-category technical SEO scoring (100 points total). Used by geo-audit (Agent 3: Technical).
 
+## Table of Contents
+
+1. [Overview](#overview) — score interpretation, status thresholds
+2. [Crawlability (15 pts)](#category-1-crawlability-15-points)
+3. [Indexability (12 pts)](#category-2-indexability-12-points)
+4. [Security (10 pts)](#category-3-security-10-points)
+5. [URL Structure (8 pts)](#category-4-url-structure-8-points)
+6. [Mobile Optimization (10 pts)](#category-5-mobile-optimization-10-points)
+7. [Core Web Vitals (15 pts)](#category-6-core-web-vitals-15-points)
+8. [Server-Side Rendering (15 pts)](#category-7-server-side-rendering-15-points--critical-for-geo) — **GEO critical**
+9. [Page Speed & Server (15 pts)](#category-8-page-speed--server-performance-15-points)
+10. [IndexNow Protocol](#indexnow-protocol)
+11. [Overall Scoring Summary](#overall-scoring-summary)
+
+---
+
 ## Overview
 
 Technical SEO forms the foundation of both traditional search visibility and AI search citation. A technically broken site cannot be crawled, indexed, or cited by any platform. This reference covers 8 categories with specific attention to GEO requirements — most critically, **server-side rendering** (AI crawlers do not execute JavaScript) and **AI crawler access** (many sites inadvertently block AI crawlers in robots.txt).

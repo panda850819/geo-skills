@@ -3,8 +3,10 @@ name: geo-audit
 description: >
   GEO multi-dimension audit for AI search visibility. Use when auditing a website's
   discoverability across AI platforms (ChatGPT, Perplexity, Gemini, Google AIO, Copilot).
-  Scores citability, brand authority, technical foundations, schema, content quality,
-  and platform-specific readiness with weighted composite scoring.
+  Triggers on "GEO audit", "AI search optimization", "AI visibility audit", "SEO for AI",
+  "audit site for AI", "how visible is my site to AI". Scores citability, brand authority,
+  technical foundations, schema, content quality, and platform-specific readiness with
+  weighted composite scoring.
 model: sonnet
 allowed-tools:
   - Read
@@ -22,13 +24,13 @@ allowed-tools:
 
 ## References
 
-Before starting, read the methodology reference for scoring rubrics, crawler lists, and platform criteria:
+Before starting, read the methodology reference for scoring rubrics, crawler lists, and platform criteria. The file is a sibling directory to this skill:
 
 ```
-references/geo-methodology.md  (relative to this skill's pack directory)
+../references/geo-methodology.md
 ```
 
-The file is located alongside this skill at `packs/geo/references/geo-methodology.md` in the geo-skills repo. If installed via skm, read from the same cache directory as this SKILL.md (replace the skill folder name with `references/`).
+Resolve relative to this SKILL.md's parent directory. For example, if this skill is at `~/.claude/skills/geo-audit/SKILL.md` (symlinked to `~/.skm/cache/geo/packs/geo/geo-audit/SKILL.md`), the reference is at `~/.skm/cache/geo/packs/geo/references/geo-methodology.md`.
 
 ## Quick Reference
 
@@ -68,7 +70,7 @@ Agent 4: Content          → E-E-A-T assessment, content quality, freshness
 Agent 5: Schema           → JSON-LD detection, validation, sameAs audit, generation
 ```
 
-Each agent should reference `knowledge/Marketing/geo-methodology.md` for scoring rubrics and platform-specific criteria.
+Each agent should read `../references/geo-methodology.md` (resolved from this skill's directory) for scoring rubrics and platform-specific criteria.
 
 ### Phase 3: Synthesis (Sequential)
 

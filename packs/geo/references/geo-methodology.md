@@ -23,35 +23,26 @@ Key data points:
 
 ## 1. Citability Scoring Framework
 
+> **SSOT**: Full scoring rubrics (per-dimension score bands, examples, detection patterns, analysis procedure) are in `../geo-citability/SKILL.md`. Below is the summary only.
+
 ### 5 Dimensions
 
-| Dimension | Weight | What It Measures |
-|-----------|--------|-----------------|
-| Answer Block Quality | 30% | Clear, quotable answer passages with definition patterns |
-| Self-Containment | 25% | Passages extractable without surrounding context |
-| Structural Readability | 20% | Heading hierarchy, paragraph length, tables/lists |
-| Statistical Density | 15% | Specific data points with named sources |
-| Uniqueness & Original Data | 10% | First-party research, proprietary insights |
+| Dimension | Weight |
+|-----------|--------|
+| Answer Block Quality | 30% |
+| Self-Containment | 25% |
+| Structural Readability | 20% |
+| Statistical Density | 15% |
+| Uniqueness & Original Data | 10% |
 
-### Optimal Passage Characteristics
+### Key Research Data
 
-- **Length**: 134-167 words (Bortolato 2025 analysis of AI Overview passages)
-- **Definition patterns**: Increase citation 2.1x (Georgia Tech 2024)
-- **Statistics**: +40% citation rate (Princeton 2024)
+- **Optimal length**: 134-167 words (Bortolato 2025)
+- **Definition patterns**: +2.1x citation (Georgia Tech 2024)
+- **Statistics**: +40% citation (Princeton 2024)
 - **Authority quotations**: +115% in some categories (IIT Delhi 2024)
 - **Fluency optimization**: +30% average visibility
 - **Source citations**: +20-25% citation by Perplexity and ChatGPT
-
-### Answer Block Patterns
-
-```
-HIGH: "Content delivery networks (CDNs) are distributed server systems
-that cache and serve web content from locations geographically close
-to end users. A CDN reduces latency by 50-70% on average."
-
-LOW: "If you've ever wondered why some websites load faster, the answer
-might surprise you. There's this amazing technology..."
-```
 
 ---
 

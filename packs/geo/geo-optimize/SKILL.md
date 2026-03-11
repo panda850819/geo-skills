@@ -2,8 +2,10 @@
 name: geo-optimize
 description: >
   GEO writing optimization for content creators. Use when writing or editing content
-  to maximize AI citability. Provides real-time GEO checklist, passage rewrites,
-  schema suggestions, and platform-specific tips. Chains with content-creator skill.
+  to maximize AI citability. Triggers on "GEO optimize", "optimize for AI search",
+  "make content citable", "AI-optimize this article", "check GEO before publishing".
+  Provides GEO checklist, passage rewrites, schema suggestions, and platform-specific
+  tips. Chains with content-creator skill.
 model: sonnet
 allowed-tools:
   - Read
@@ -20,13 +22,13 @@ allowed-tools:
 
 ## References
 
-For platform-specific criteria, citability rubrics, and schema strategy:
+For citability scoring rubrics (SSOT), platform-specific criteria, AI crawler lists, and schema strategy:
 
 ```
-references/geo-methodology.md  (relative to this skill's pack directory)
+../references/geo-methodology.md
 ```
 
-The file is located alongside this skill at `packs/geo/references/geo-methodology.md` in the geo-skills repo. If installed via skm, read from the same cache directory as this SKILL.md (replace the skill folder name with `references/`).
+Resolve relative to this SKILL.md's parent directory. If this skill is at `~/.skm/cache/geo/packs/geo/geo-optimize/SKILL.md`, the reference is at `~/.skm/cache/geo/packs/geo/references/geo-methodology.md`.
 
 ## When to Use
 

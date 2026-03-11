@@ -1,10 +1,11 @@
 ---
 name: geo-citability
 description: >
-  AI citability scoring for web content. Use when analyzing how likely AI systems
-  will cite or quote passages from a page. Scores on 5 dimensions (answer quality,
-  self-containment, structure, stats density, uniqueness) with rewrite suggestions.
-  Works standalone or as part of geo-audit.
+  AI citability scoring for web content. Use when analyzing how likely AI systems will
+  cite or quote passages from a page. Triggers on "citability", "citation readiness",
+  "passage scoring", "content citability", "will AI cite this", "how citable is this".
+  Scores on 5 dimensions (answer quality, self-containment, structure, stats density,
+  uniqueness) with rewrite suggestions. Works standalone or as part of geo-audit.
 model: sonnet
 allowed-tools:
   - Read
@@ -21,13 +22,13 @@ allowed-tools:
 
 ## References
 
-For full scoring rubrics, AI system citation preferences, and research data:
+For platform-specific optimization criteria, AI crawler lists, and schema strategy (not duplicated in this skill):
 
 ```
-references/geo-methodology.md  (relative to this skill's pack directory)
+../references/geo-methodology.md
 ```
 
-The file is located alongside this skill at `packs/geo/references/geo-methodology.md` in the geo-skills repo. If installed via skm, read from the same cache directory as this SKILL.md (replace the skill folder name with `references/`).
+Resolve relative to this SKILL.md's parent directory. If this skill is at `~/.skm/cache/geo/packs/geo/geo-citability/SKILL.md`, the reference is at `~/.skm/cache/geo/packs/geo/references/geo-methodology.md`.
 
 ## Core Insight
 

@@ -48,6 +48,8 @@ Read these before optimizing:
 | `../references/schema-templates.md` | When generating schema recommendations |
 | `../references/platform-rubrics.md` | When adding platform-specific tips |
 
+For specific improvement actions with tools and effort estimates, see `../references/action-playbook.md`.
+
 Resolve all paths relative to this SKILL.md's parent directory.
 
 ---

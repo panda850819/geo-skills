@@ -44,6 +44,8 @@ Each subagent reads specific references before scoring:
 | Agent 4: Content | `../references/eeat-content.md` |
 | Agent 5: Schema | `../references/schema-templates.md` |
 
+For Phase 3 (recommendations), read `../references/action-playbook.md` to generate specific, actionable improvement steps with effort/impact/timeline for each finding.
+
 Resolve all paths relative to this SKILL.md's parent directory.
 
 ---

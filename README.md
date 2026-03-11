@@ -26,7 +26,8 @@ packs/geo/
     ├── brand-authority.md      # YouTube/Reddit/Wikipedia/LinkedIn scoring
     ├── schema-templates.md     # JSON-LD templates + sameAs strategy
     ├── technical-scoring.md    # 8-category technical SEO (100pts)
-    └── eeat-content.md         # E-E-A-T 4x25pts + content quality metrics
+    ├── eeat-content.md         # E-E-A-T 4x25pts + content quality metrics
+    └── action-playbook.md      # Concrete actions to improve scores (tools, effort, timeline)
 ```
 
 All skills reference `../references/` relative to their SKILL.md location.

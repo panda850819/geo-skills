@@ -35,7 +35,9 @@ Also callable from `geo-audit` as part of the full audit flow.
 
 Read `../references/citability-rubrics.md` before scoring. It contains the complete 5-dimension rubrics with score bands, detection patterns, examples, and AI system citation preferences.
 
-Resolve relative to this SKILL.md's parent directory.
+For rewrite suggestions with specific improvement actions, see `../references/action-playbook.md` Section 1 (Citability Quick Wins).
+
+Resolve all paths relative to this SKILL.md's parent directory.
 
 ---
 

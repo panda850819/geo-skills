@@ -4,9 +4,8 @@ description: >
   GEO multi-dimension audit for AI search visibility. Use when auditing a website's
   discoverability across AI platforms (ChatGPT, Perplexity, Gemini, Google AIO, Copilot).
   Triggers on "GEO audit", "AI search optimization", "AI visibility audit", "SEO for AI",
-  "audit site for AI", "how visible is my site to AI". Scores citability, brand authority,
-  technical foundations, schema, content quality, and platform-specific readiness with
-  weighted composite scoring.
+  "audit site for AI", "how visible is my site to AI". Produces a weighted composite score
+  across 6 dimensions with prioritized action plan.
 model: sonnet
 allowed-tools:
   - Read
@@ -20,17 +19,7 @@ allowed-tools:
 
 # GEO Audit Skill
 
-> Generative Engine Optimization audit — score a website's AI search visibility across 6 dimensions.
-
-## References
-
-Before starting, read the methodology reference for scoring rubrics, crawler lists, and platform criteria. The file is a sibling directory to this skill:
-
-```
-../references/geo-methodology.md
-```
-
-Resolve relative to this SKILL.md's parent directory. For example, if this skill is at `~/.claude/skills/geo-audit/SKILL.md` (symlinked to `~/.skm/cache/geo/packs/geo/geo-audit/SKILL.md`), the reference is at `~/.skm/cache/geo/packs/geo/references/geo-methodology.md`.
+> Generative Engine Optimization audit -- score a website's AI search visibility across 6 dimensions.
 
 ## Quick Reference
 
@@ -41,21 +30,30 @@ Resolve relative to this SKILL.md's parent directory. For example, if this skill
 
 ---
 
+## References
+
+Read `../references/geo-methodology.md` first for composite weights, crawler lists, and severity levels.
+
+Each subagent reads specific references before scoring:
+
+| Agent | Must Read Before Scoring |
+|-------|-------------------------|
+| Agent 1: AI Visibility | `../references/citability-rubrics.md`, `../references/brand-authority.md` |
+| Agent 2: Platform | `../references/platform-rubrics.md` |
+| Agent 3: Technical | `../references/technical-scoring.md` |
+| Agent 4: Content | `../references/eeat-content.md` |
+| Agent 5: Schema | `../references/schema-templates.md` |
+
+Resolve all paths relative to this SKILL.md's parent directory.
+
+---
+
 ## Audit Flow
 
 ### Phase 1: Discovery (Sequential)
 
 1. **Fetch homepage** via WebFetch
-2. **Detect business type** from signals:
-
-| Type | Signals |
-|------|---------|
-| SaaS | Pricing page, "Sign up", "Free trial", "/app", "/dashboard", API docs |
-| Local | Phone, address, "Near me", Google Maps embed, service area |
-| E-commerce | Product pages, cart, price elements, product schema |
-| Publisher | Blog, articles, bylines, publication dates, article schema |
-| Agency | Portfolio, case studies, "Our services", client logos |
-
+2. **Detect business type** from page signals (SaaS, Local, E-commerce, Publisher, Agency, Other). See `../references/geo-methodology.md` for signal table.
 3. **Extract key pages** from sitemap.xml or internal links (max 20 pages)
 
 ### Phase 2: Parallel Analysis (5 Subagents)
@@ -63,33 +61,31 @@ Resolve relative to this SKILL.md's parent directory. For example, if this skill
 Spawn 5 agents simultaneously:
 
 ```
-Agent 1: AI Visibility   → Citability scoring + AI crawler access + brand mentions
-Agent 2: Platform         → Per-platform optimization (AIO, ChatGPT, Perplexity, Gemini, Copilot)
-Agent 3: Technical        → SSR, Core Web Vitals, crawlability, security, mobile
-Agent 4: Content          → E-E-A-T assessment, content quality, freshness
-Agent 5: Schema           → JSON-LD detection, validation, sameAs audit, generation
+Agent 1: AI Visibility   -> Citability scoring + AI crawler access + brand mentions
+Agent 2: Platform         -> Per-platform optimization (AIO, ChatGPT, Perplexity, Gemini, Copilot)
+Agent 3: Technical        -> SSR, Core Web Vitals, crawlability, security, mobile
+Agent 4: Content          -> E-E-A-T assessment, content quality, freshness
+Agent 5: Schema           -> JSON-LD detection, validation, sameAs audit, generation
 ```
-
-Each agent should read `../references/geo-methodology.md` (resolved from this skill's directory) for scoring rubrics and platform-specific criteria.
 
 ### Phase 3: Synthesis (Sequential)
 
 1. Collect all agent reports
-2. Calculate composite GEO Score using weights below
+2. Calculate composite GEO Score using formula below
 3. Generate prioritized action plan by severity
 
 ---
 
 ## Composite GEO Score (0-100)
 
-| Category | Weight | What It Measures |
-|----------|--------|-----------------|
-| AI Citability & Visibility | 25% | Passage scoring, answer blocks, AI crawler access, llms.txt |
-| Brand Authority Signals | 20% | YouTube (~0.737 correlation), Reddit, Wikipedia, LinkedIn presence |
-| Content Quality & E-E-A-T | 20% | Experience, Expertise, Authoritativeness, Trustworthiness |
-| Technical Foundations | 15% | SSR (critical for AI crawlers), CWV, crawlability, mobile, security |
-| Structured Data | 10% | Schema completeness, sameAs links, JSON-LD validation |
-| Platform Optimization | 10% | Per-platform readiness scores averaged |
+| Category | Weight | Subagent |
+|----------|--------|----------|
+| AI Citability & Visibility | 25% | Agent 1 |
+| Brand Authority Signals | 20% | Agent 1 |
+| Content Quality & E-E-A-T | 20% | Agent 4 |
+| Technical Foundations | 15% | Agent 3 |
+| Structured Data | 10% | Agent 5 |
+| Platform Optimization | 10% | Agent 2 |
 
 ```
 GEO_Score = (Citability * 0.25) + (Brand * 0.20) + (Content * 0.20)
@@ -102,71 +98,40 @@ GEO_Score = (Citability * 0.25) + (Brand * 0.20) + (Content * 0.20)
 
 ### Agent 1: AI Visibility
 
-Analyze:
+Read `../references/citability-rubrics.md` for the 5-dimension rubrics (answer quality 30%, self-containment 25%, structure 20%, stats 15%, uniqueness 10%).
 
-**Citability** (use geo-citability skill rubric):
-- Score content blocks on 5 dimensions: Answer Block Quality (30%), Self-Containment (25%), Structural Readability (20%), Statistical Density (15%), Uniqueness (10%)
-- Optimal passage length: 134-167 words
+Read `../references/brand-authority.md` for platform scoring rubrics and composite formula (YouTube 25%, Reddit 25%, Wikipedia 20%, LinkedIn 15%, Other 15%).
+
+Tasks:
+- Score content blocks on 5 citability dimensions
 - Identify top 3 strongest and bottom 3 weakest blocks
-
-**AI Crawler Access**:
-- Fetch robots.txt, check all 14 AI crawlers (see geo-methodology.md for full list)
-- Tier 1 (must allow): GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot
-- Tier 2 (should allow): Google-Extended, GoogleOther, Applebot-Extended, Amazonbot, FacebookBot
-- Tier 3 (context-dependent): CCBot, anthropic-ai, Bytespider, cohere-ai
-- Check meta robots tags and X-Robots-Tag headers on sample pages
-- Check for llms.txt presence
-
-**Brand Mentions**:
-- Check Wikipedia/Wikidata via API (most reliable method)
-- Check YouTube, Reddit, LinkedIn, other platforms for brand presence
-- Score with weights: YouTube 25%, Reddit 25%, Wikipedia 20%, LinkedIn 15%, Other 15%
+- Fetch robots.txt, check all 14 AI crawlers (see `../references/geo-methodology.md`)
+- Check Wikipedia/Wikidata via API (see detection method in brand-authority.md)
+- Score brand presence across YouTube, Reddit, Wikipedia, LinkedIn, other platforms
 
 ### Agent 2: Platform Analysis
 
-Score each platform 0-100 using platform-specific rubrics from geo-methodology.md:
+Read `../references/platform-rubrics.md` for per-platform 0-100 scoring rubrics.
 
-| Platform | #1 Priority | #2 Priority | #3 Priority |
-|----------|-------------|-------------|-------------|
-| Google AIO | Top-10 ranking | Q&A structure + tables | Featured snippet patterns |
-| ChatGPT | Wikipedia entity | Bing index + entity graph | Reddit + comprehensive content |
-| Perplexity | Reddit presence (46.7% citations) | Original research | Freshness + community validation |
-| Gemini | YouTube content | Knowledge Panel + Schema.org | Google ecosystem presence |
-| Copilot | IndexNow protocol | Bing Webmaster Tools | LinkedIn + meta descriptions |
-
-Cross-platform universal actions: Wikipedia/Wikidata entity, YouTube, structured content, Schema.org (Organization + sameAs), fast load, author pages, visible dates.
+Score each platform using the point tables in the reference. Report per-platform scores and the single biggest gap for each.
 
 ### Agent 3: Technical
 
-Score 0-100 across 8 categories:
-- Crawlability (15pts): robots.txt, sitemap, internal linking
-- Indexability (12pts): Canonicals, duplicates, pagination
-- Security (10pts): HTTPS, security headers
-- URL Structure (8pts): Clean URLs, redirect chains
-- Mobile (10pts): Viewport, tap targets, font sizes
-- Core Web Vitals (15pts): LCP <2.5s, INP <200ms, CLS <0.1
-- **SSR (15pts — GEO critical)**: AI crawlers do NOT execute JS. If content requires JS rendering, AI crawlers see empty pages.
-- Page Speed (15pts): TTFB, resource optimization, CDN
+Read `../references/technical-scoring.md` for the 8-category breakdown (100 points total).
+
+Score across: Crawlability (15pts), Indexability (12pts), Security (10pts), URL Structure (8pts), Mobile (10pts), Core Web Vitals (15pts), SSR (15pts -- GEO critical), Page Speed (15pts).
 
 ### Agent 4: Content
 
-Score E-E-A-T (25pts each dimension = 100 total + topical authority modifier):
-- **Experience**: First-person accounts, original research, case studies, screenshots
-- **Expertise**: Author credentials, technical depth, methodology, data-backed claims
-- **Authoritativeness**: External citations, media mentions, awards, topical coverage
-- **Trustworthiness**: Contact info, privacy policy, editorial standards, accuracy
+Read `../references/eeat-content.md` for E-E-A-T signal tables (25pts each) and content quality metrics.
 
-Also assess: content freshness, AI content quality signals, readability, paragraph structure.
+Score all 4 E-E-A-T dimensions. Assess content freshness, AI content signals, readability. Apply topical authority modifier (+10 to -5).
 
 ### Agent 5: Schema
 
-- Detect all JSON-LD, Microdata, RDFa on key pages
-- Validate against Schema.org specs
-- Audit sameAs links (the single most important GEO property)
-- Check for: Organization, Article+Author, business-type-specific schemas
-- Check for GEO-specific properties: `knowsAbout`, `speakable`, complete sameAs
-- Generate ready-to-paste JSON-LD for missing schemas
-- Flag deprecated schemas (HowTo rich results, FAQPage restrictions)
+Read `../references/schema-templates.md` for schema types, sameAs strategy, and scoring rubric.
+
+Detect all JSON-LD/Microdata/RDFa. Validate against Schema.org. Audit sameAs links. Check for GEO-specific properties (knowsAbout, speakable). Generate ready-to-paste JSON-LD for missing schemas. Flag deprecated schemas.
 
 ---
 
@@ -175,7 +140,7 @@ Also assess: content freshness, AI content quality signals, readability, paragra
 Generate `GEO-AUDIT-REPORT.md`:
 
 ```markdown
-# GEO Audit Report — [Domain]
+# GEO Audit Report -- [Domain]
 Date: [Date]
 Business Type: [Detected Type]
 
@@ -226,14 +191,3 @@ When user adds `quick`:
 3. Score citability on homepage content blocks
 4. Check robots.txt for AI crawlers
 5. Output inline summary (no file), ~60 seconds
-
----
-
-## Severity Classification
-
-| Level | Definition | Example |
-|-------|-----------|---------|
-| Critical | Blocking AI visibility entirely | All Tier 1 crawlers blocked, site is 100% client-rendered |
-| High | Significantly reducing AI citations | No schema.org, no author info, thin content |
-| Medium | Missing optimization opportunities | No llms.txt, incomplete sameAs, stale content |
-| Low | Nice-to-have improvements | Tier 3 crawler access, minor CWV improvements |

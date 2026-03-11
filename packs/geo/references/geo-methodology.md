@@ -1,13 +1,6 @@
----
-date: 2026-03-11
-topic: GEO (Generative Engine Optimization)
-category: Marketing/SEO
-source: Synthesized from geo-seo-claude (MIT), Ahrefs Dec 2025 study, Princeton/Georgia Tech/IIT Delhi 2024 GEO research
----
-
 # GEO Methodology Reference
 
-> AI search optimization methodology. Referenced by geo-audit, geo-citability, geo-optimize skills.
+> Index file. Core thesis, composite scoring, and pointers to detailed reference files.
 
 ## Core Thesis
 
@@ -19,44 +12,57 @@ Key data points:
 - Only 11% of domains are cited by both ChatGPT and Google AIO for the same query
 - GEO-optimized content: 30-115% higher visibility in AI responses (Princeton/Georgia Tech/IIT Delhi 2024)
 
----
-
-## 1. Citability Scoring Framework
-
-> **SSOT**: Full scoring rubrics (per-dimension score bands, examples, detection patterns, analysis procedure) are in `../geo-citability/SKILL.md`. Below is the summary only.
-
-### 5 Dimensions
-
-| Dimension | Weight |
-|-----------|--------|
-| Answer Block Quality | 30% |
-| Self-Containment | 25% |
-| Structural Readability | 20% |
-| Statistical Density | 15% |
-| Uniqueness & Original Data | 10% |
-
-### Key Research Data
-
-- **Optimal length**: 134-167 words (Bortolato 2025)
-- **Definition patterns**: +2.1x citation (Georgia Tech 2024)
-- **Statistics**: +40% citation (Princeton 2024)
-- **Authority quotations**: +115% in some categories (IIT Delhi 2024)
-- **Fluency optimization**: +30% average visibility
-- **Source citations**: +20-25% citation by Perplexity and ChatGPT
+Market context (2025-2026):
+- GEO services market: $850M-$886M (2025), projected $7.3B by 2031 (34% CAGR)
+- AI-referred sessions growth: +527% (Jan-May 2025, SparkToro)
+- AI traffic conversion vs organic: 4.4x higher
+- Google AI Overviews reach: 1.5B users/month, 200+ countries
+- ChatGPT weekly active users: 900M+
+- Perplexity monthly queries: 500M+
+- Gartner: -50% traditional search traffic by 2028
+- Only 23% of marketers investing in GEO
 
 ---
 
-## 2. AI Crawler Reference
+## Composite GEO Score (0-100)
+
+| Category | Weight | What It Measures | Detailed Reference |
+|----------|--------|------------------|--------------------|
+| AI Citability & Visibility | 25% | Passage scoring, answer blocks, AI crawler access | `citability-rubrics.md` |
+| Brand Authority Signals | 20% | YouTube, Reddit, Wikipedia, LinkedIn presence | `brand-authority.md` |
+| Content Quality & E-E-A-T | 20% | Experience, Expertise, Authoritativeness, Trustworthiness | `eeat-content.md` |
+| Technical Foundations | 15% | SSR, CWV, crawlability, mobile, security | `technical-scoring.md` |
+| Structured Data | 10% | Schema completeness, sameAs links, JSON-LD validation | `schema-templates.md` |
+| Platform Optimization | 10% | Per-platform readiness scores averaged | `platform-rubrics.md` |
+
+```
+GEO_Score = (Citability * 0.25) + (Brand * 0.20) + (Content * 0.20)
+          + (Technical * 0.15) + (Schema * 0.10) + (Platform * 0.10)
+```
+
+### Score Interpretation
+
+| Range | Rating |
+|-------|--------|
+| 85-100 | Dominant — highly likely to be cited across AI platforms |
+| 70-84 | Strong — solid AI presence with specific gaps |
+| 50-69 | Moderate — inconsistent AI visibility |
+| 30-49 | Weak — significant GEO gaps |
+| 0-29 | Minimal — fundamental strategy overhaul needed |
+
+---
+
+## AI Crawler Reference
 
 ### Tier 1: Critical for AI Search (ALLOW)
 
 | Crawler | Operator | User-Agent | Purpose |
 |---------|----------|-----------|---------|
-| GPTBot | OpenAI | `GPTBot` | ChatGPT search + browsing |
-| OAI-SearchBot | OpenAI | `OAI-SearchBot` | Search-only, no training |
+| GPTBot | OpenAI | `GPTBot` | ChatGPT search + browsing (300M+ weekly users) |
+| OAI-SearchBot | OpenAI | `OAI-SearchBot` | Search-only, no training use |
 | ChatGPT-User | OpenAI | `ChatGPT-User` | User-initiated URL visits |
 | ClaudeBot | Anthropic | `ClaudeBot` | Web search + analysis |
-| PerplexityBot | Perplexity | `PerplexityBot` | AI search with source attribution |
+| PerplexityBot | Perplexity | `PerplexityBot` | AI search with source attribution (best referral traffic) |
 
 ### Tier 2: Broader Ecosystem (ALLOW)
 
@@ -76,6 +82,37 @@ Key data points:
 | anthropic-ai | Allow/Block | Training only. ClaudeBot handles live features. |
 | Bytespider | **Block** | Aggressive crawling, minimal benefit for Western markets |
 | cohere-ai | Allow/Block | Low priority |
+
+### Full User-Agent Strings
+
+| Crawler | Full UA String |
+|---------|---------------|
+| GPTBot | `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)` |
+| OAI-SearchBot | `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; OAI-SearchBot/1.0; +https://docs.openai.com/bots/overview)` |
+| ChatGPT-User | `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ChatGPT-User/1.0; +https://openai.com/bot)` |
+| ClaudeBot | `ClaudeBot/1.0; +https://www.anthropic.com/claude-bot` |
+| PerplexityBot | `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)` |
+| Amazonbot | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.2.5 (KHTML, like Gecko) Version/8.0.2 Safari/600.2.5 (compatible; Amazonbot/0.1; +https://developer.amazon.com/support/amazonbot)` |
+| CCBot | `CCBot/2.0 (https://commoncrawl.org/faq/)` |
+
+### Recommendation Matrix
+
+| Crawler | Tier | Recommendation | Impact of Blocking |
+|---------|------|---------------|-------------------|
+| GPTBot | 1 | **ALLOW** | Invisible in ChatGPT Search |
+| OAI-SearchBot | 1 | **ALLOW** | Not in ChatGPT search results |
+| ChatGPT-User | 1 | **ALLOW** | Users can't browse your pages via ChatGPT |
+| ClaudeBot | 1 | **ALLOW** | Not accessible to Claude web search |
+| PerplexityBot | 1 | **ALLOW** | Not in Perplexity results (loses referral traffic) |
+| Google-Extended | 2 | **ALLOW** | May reduce Gemini/AIO presence |
+| GoogleOther | 2 | **ALLOW** | Reduced Google AI research inclusion |
+| Applebot-Extended | 2 | **ALLOW** | Not in Apple Intelligence features |
+| Amazonbot | 2 | **ALLOW** | Not in Alexa voice responses |
+| FacebookBot | 2 | **ALLOW** | Not accessible to Meta AI |
+| CCBot | 3 | Context | No live search impact |
+| anthropic-ai | 3 | Context | No live search impact |
+| Bytespider | 3 | **BLOCK** | Minimal impact, aggressive crawling |
+| cohere-ai | 3 | Context | Minimal consumer impact |
 
 ### robots.txt Template (Maximum AI Visibility)
 
@@ -113,178 +150,37 @@ Disallow: /
 
 ---
 
-## 3. Platform-Specific Optimization
+## Business Type Detection
 
-### Google AI Overviews (AIO)
-
-- 92% of AIO citations from pages already ranking top 10
-- 47% from pages ranking below position 5 (AIO has own selection logic)
-- Strongly favors: question headings, direct answers, tables, lists, FAQ sections
-- Featured snippet optimization has ~70% overlap with AIO optimization
-
-**Priority checklist**: Top-10 ranking → Question H2s → Direct answers → Tables/lists → FAQ section → Statistics with sources → Visible dates → Author byline
-
-### ChatGPT Web Search
-
-- Uses **Bing's index** (not Google)
-- Top sources: Wikipedia (47.9%), Reddit (11.3%), YouTube, major news
-- Heavily weights **entity recognition** — Wikipedia/Wikidata presence critical
-- Prefers comprehensive content (2000+ words)
-
-**Priority checklist**: Wikipedia/Wikidata entity → Bing Webmaster Tools → Reddit authority → YouTube → Authoritative backlinks (.edu, .gov) → Entity consistency → Comprehensive content
-
-### Perplexity AI
-
-- Top sources: **Reddit (46.7%)**, Wikipedia, YouTube, publications
-- Heaviest emphasis on **community validation**
-- Freshness is strong ranking signal
-- Cites 5-15 sources per answer (more opportunity for mid-authority sites)
-
-**Priority checklist**: Active Reddit presence → Forum/community mentions → Content freshness → Original research → YouTube with transcripts → Multi-source claim validation
-
-### Google Gemini
-
-- Uses Google's index + **strong Google ecosystem weighting**
-- YouTube weighted significantly more than in standard Search
-- Direct access to Google Business Profile and Knowledge Graph
-- Multi-modal: references images, videos, text together
-
-**Priority checklist**: Knowledge Panel → Google Business Profile → YouTube with chapters → Schema.org (comprehensive) → Google ecosystem (Scholar, News, Maps) → Image optimization → E-E-A-T
-
-### Bing Copilot
-
-- Bing's index (shared infra with ChatGPT, different ranking)
-- Supports **IndexNow** for near-instant indexing
-- Microsoft ecosystem: LinkedIn, GitHub, Microsoft Learn
-- Weights meta descriptions more than Google does
-
-**Priority checklist**: IndexNow → Bing Webmaster Tools → LinkedIn company page → Meta descriptions → Exact-match keywords → Fast page load (<2s)
-
-### Cross-Platform Priorities
-
-| Priority | AIO | ChatGPT | Perplexity | Gemini | Copilot |
-|----------|-----|---------|------------|--------|---------|
-| #1 | Top-10 ranking | Wikipedia | Reddit | YouTube | IndexNow |
-| #2 | Q&A structure | Entity graph | Original research | Knowledge Panel | Bing WMT |
-| #3 | Tables/lists | Bing SEO | Freshness | Schema.org | LinkedIn |
-
-### Universal Actions (help ALL platforms)
-
-1. Wikipedia/Wikidata entity presence
-2. YouTube channel with relevant content
-3. Well-structured content with clear headings
-4. Schema.org (Organization + sameAs)
-5. Fast page load + clean HTML
-6. Author pages with credentials + sameAs
-7. Regular content updates with visible dates
+| Type | Signals |
+|------|---------|
+| **SaaS** | Pricing page, "Sign up", "Free trial", "/app", "/dashboard", API docs |
+| **Local Service** | Phone number, address, "Near me", Google Maps embed, service area |
+| **E-commerce** | Product pages, cart, "Add to cart", price elements, product schema |
+| **Publisher** | Blog, articles, bylines, publication dates, article schema |
+| **Agency** | Portfolio, case studies, "Our services", client logos, testimonials |
+| **Other** | Default — apply general GEO best practices |
 
 ---
 
-## 4. Schema Strategy for GEO
+## Key Research Citations
 
-### sameAs — The Most Important GEO Property
-
-`sameAs` tells AI: "This entity on my site IS the same entity as these profiles." Creates the entity graph AI uses to verify, trust, and cite.
-
-**Priority order:**
-1. Wikipedia article
-2. Wikidata item (Q-number)
-3. LinkedIn (company/personal)
-4. YouTube channel
-5. Twitter/X
-6. Facebook page
-7. Crunchbase (startups/tech)
-8. GitHub (tech companies)
-9. Google Scholar / ORCID (academics)
-
-### GEO-Specific Schema Properties
-
-| Property | Schema Type | Why It Matters |
-|----------|------------|---------------|
-| `sameAs` | Organization, Person | Entity graph — AI identity verification |
-| `knowsAbout` | Organization, Person | Tells AI what topics this entity is expert in |
-| `speakable` | Article, WebPage | Marks passages for voice/AI assistant extraction |
-| `dateModified` | Article | Freshness signal — AI deprioritizes stale content |
-
-### Business-Type Schema Map
-
-| Type | Required Schemas |
-|------|-----------------|
-| All | Organization + WebSite + SearchAction |
-| SaaS | + SoftwareApplication with featureList |
-| Local | + LocalBusiness with geo, hours, reviews |
-| E-commerce | + Product with offers, shipping, returns |
-| Publisher | + Article + Author (Person) with speakable |
-
-### Deprecated/Changed Schemas
-
-| Schema | Status (2024+) | GEO Relevance |
-|--------|---------------|--------------|
-| HowTo | Rich results deprecated | Still useful for AI parsing |
-| FAQPage | Restricted to govt/health | Still parsed by AI platforms |
-| SpecialAnnouncement | Deprecated | Remove |
+- **Optimal passage length**: 134-167 words (Bortolato 2025 analysis of AI Overview passages)
+- **Definition patterns**: +2.1x citation rate (Georgia Tech 2024)
+- **Statistics in passages**: +40% citation (Princeton GEO study 2024)
+- **Authority quotations**: +115% in certain categories (IIT Delhi 2024)
+- **Fluency optimization**: +30% average visibility across all query types
+- **Source citations**: +20-25% citation rate by Perplexity and ChatGPT
+- **Brand mentions vs backlinks**: ~3x stronger correlation with AI visibility (Ahrefs Dec 2025, 75K brands)
+- **AI crawler blocking**: 35%+ of top 1,000 websites block at least one major AI crawler (Originality.ai 2025)
 
 ---
 
-## 5. E-E-A-T for GEO
+## Severity Classification
 
-Per Google Dec 2025 QRG update: E-E-A-T now applies to ALL competitive queries, not just YMYL.
-
-### Scoring (25 points each)
-
-**Experience**: First-person accounts, original research, case studies, process demonstrations
-**Expertise**: Author credentials, technical depth, methodology, data-backed claims
-**Authoritativeness**: External citations, media mentions, awards, topical coverage breadth
-**Trustworthiness**: Contact info, privacy policy, editorial standards, accuracy, disclosures
-
-### AI Content Quality Signals
-
-**Low-quality flags**: "In today's fast-paced world...", generic advice, no first-hand experience, hedging overload, filler content
-**High-quality signals**: Original data, specific examples, contrarian views backed by reasoning, first-person experience, practical recommendations
-
----
-
-## 6. Technical GEO Requirements
-
-### SSR is Mandatory
-
-AI crawlers (GPTBot, ClaudeBot, PerplexityBot) do **NOT execute JavaScript**. Client-rendered SPAs are invisible to AI search. Check with `curl -s [URL]` — if content is missing from raw HTML, AI crawlers can't see it.
-
-### Core Web Vitals Thresholds
-
-| Metric | Good | Poor |
-|--------|------|------|
-| LCP | <2.5s | >4.0s |
-| INP | <200ms | >500ms |
-| CLS | <0.1 | >0.25 |
-
-### IndexNow
-
-Open protocol for instant Bing/Yandex/Seznam indexing. ChatGPT and Copilot use Bing's index — faster Bing indexing = faster AI visibility on two major platforms.
-
-### llms.txt
-
-Emerging standard (Jeremy Howard) for AI crawler guidance. Place at site root. Contains: title, description, sections with categorized internal links. Helps AI crawlers understand site structure.
-
----
-
-## 7. Composite GEO Score Weights
-
-| Category | Weight |
-|----------|--------|
-| AI Citability & Visibility | 25% |
-| Brand Authority Signals | 20% |
-| Content Quality & E-E-A-T | 20% |
-| Technical Foundations | 15% |
-| Structured Data | 10% |
-| Platform Optimization | 10% |
-
-### Score Interpretation
-
-| Range | Rating |
-|-------|--------|
-| 85-100 | Dominant — highly likely to be cited across AI platforms |
-| 70-84 | Strong — solid AI presence with specific gaps |
-| 50-69 | Moderate — inconsistent AI visibility |
-| 30-49 | Weak — significant GEO gaps |
-| 0-29 | Minimal — fundamental strategy overhaul needed |
+| Level | Definition | Example |
+|-------|-----------|---------|
+| Critical | Blocking AI visibility entirely | All Tier 1 crawlers blocked, site is 100% client-rendered |
+| High | Significantly reducing AI citations | No schema.org, no author info, thin content |
+| Medium | Missing optimization opportunities | No llms.txt, incomplete sameAs, stale content |
+| Low | Nice-to-have improvements | Tier 3 crawler access, minor CWV improvements |

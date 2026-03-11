@@ -20,16 +20,6 @@ allowed-tools:
 
 > Make content AI-citable during writing, not after. Prevention over remediation.
 
-## References
-
-For citability scoring rubrics (SSOT), platform-specific criteria, AI crawler lists, and schema strategy:
-
-```
-../references/geo-methodology.md
-```
-
-Resolve relative to this SKILL.md's parent directory. If this skill is at `~/.skm/cache/geo/packs/geo/geo-optimize/SKILL.md`, the reference is at `~/.skm/cache/geo/packs/geo/references/geo-methodology.md`.
-
 ## When to Use
 
 - Writing a blog post, article, or landing page
@@ -47,47 +37,62 @@ Resolve relative to this SKILL.md's parent directory. If this skill is at `~/.sk
 
 ---
 
+## References
+
+Read these before optimizing:
+
+| Reference | When to Read |
+|-----------|-------------|
+| `../references/citability-rubrics.md` | Before scoring blocks on the 5 dimensions |
+| `../references/eeat-content.md` | When assessing E-E-A-T signals and content quality |
+| `../references/schema-templates.md` | When generating schema recommendations |
+| `../references/platform-rubrics.md` | When adding platform-specific tips |
+
+Resolve all paths relative to this SKILL.md's parent directory.
+
+---
+
 ## GEO Writing Checklist
 
-Apply this checklist to every piece of content:
+Apply to every piece of content:
 
 ### Structure (do first)
 
-- [ ] **One clear H1** — matches the primary query this page targets
-- [ ] **H2s as questions** where possible — "What is X?", "How does X work?"
-- [ ] **H2>H3 hierarchy** — never skip levels
-- [ ] **2-4 sentences per paragraph** — each paragraph = one extractable idea
+- [ ] **One clear H1** -- matches the primary query this page targets
+- [ ] **H2s as questions** where possible -- "What is X?", "How does X work?"
+- [ ] **H2>H3 hierarchy** -- never skip levels
+- [ ] **2-4 sentences per paragraph** -- each paragraph = one extractable idea
 - [ ] **Tables for comparisons** of 3+ items
 - [ ] **Ordered lists** for processes, **unordered** for features
 
 ### Answer Blocks (critical for citability)
 
-- [ ] **Answer-first pattern** — each section opens with 1-2 sentence direct answer
-- [ ] **Definition patterns** — "X is [definition]" for key concepts
-- [ ] **134-167 words per key block** — the AI citation sweet spot
-- [ ] **No buried answers** — the answer is NEVER in paragraph 3 of a section
-- [ ] **Self-contained passages** — each block understandable without context
+- [ ] **Answer-first pattern** -- each section opens with 1-2 sentence direct answer
+- [ ] **Definition patterns** -- "X is [definition]" for key concepts
+- [ ] **134-167 words per key block** -- the AI citation sweet spot
+- [ ] **No buried answers** -- the answer is NEVER in paragraph 3 of a section
+- [ ] **Self-contained passages** -- each block understandable without context
 
 ### Data Density
 
-- [ ] **3+ statistics per 500 words** — specific percentages, dollar amounts, counts
-- [ ] **Named sources** — "According to [Source]" not "Studies show"
-- [ ] **Exact numbers** — "73%" not "most", "$4,500" not "thousands"
-- [ ] **Dated references** — "2025 HubSpot Report" not "a recent study"
-- [ ] **Original data when possible** — "Our analysis of 500 sites found..."
+- [ ] **3+ statistics per 500 words** -- specific percentages, dollar amounts, counts
+- [ ] **Named sources** -- "According to [Source]" not "Studies show"
+- [ ] **Exact numbers** -- "73%" not "most", "$4,500" not "thousands"
+- [ ] **Dated references** -- "2025 HubSpot Report" not "a recent study"
+- [ ] **Original data when possible** -- "Our analysis of 500 sites found..."
 
 ### E-E-A-T Signals
 
 - [ ] **Author byline** with credentials and link to author page
-- [ ] **First-person experience** — "I tested...", "We implemented..."
+- [ ] **First-person experience** -- "I tested...", "We implemented..."
 - [ ] **Publication date** and last-updated date visible
-- [ ] **Methodology shown** — how you reached conclusions
-- [ ] **Sources cited** — link or name specific sources for claims
+- [ ] **Methodology shown** -- how you reached conclusions
+- [ ] **Sources cited** -- link or name specific sources for claims
 
 ### Technical
 
-- [ ] **Content in raw HTML** — not behind JavaScript rendering
-- [ ] **Schema.org markup** — Article + Author with sameAs links
+- [ ] **Content in raw HTML** -- not behind JavaScript rendering
+- [ ] **Schema.org markup** -- Article + Author with sameAs links
 - [ ] **speakable CSS selectors** on key passages
 - [ ] **canonical URL** set correctly
 - [ ] **Meta description** that summarizes the answer (150-160 chars)
@@ -98,14 +103,11 @@ Apply this checklist to every piece of content:
 
 ### Step 1: Analyze Current Content
 
-Read the file or fetch the URL. For each content block:
-1. Score on the 5 citability dimensions (answer quality, self-containment, structure, stats, uniqueness)
-2. Flag blocks scoring below 60
-3. Identify the primary weakness of each weak block
+Read the file or fetch the URL. Score each content block on the 5 citability dimensions (see `../references/citability-rubrics.md`). Flag blocks scoring below 60.
 
 ### Step 2: Rewrite Weak Blocks
 
-For each block below 60, apply this transformation:
+For each block below 60, apply these transformation patterns:
 
 **Pattern: Answer-First Rewrite**
 ```
@@ -152,7 +154,7 @@ enterprises surveyed, 89% achieved sub-200ms TTFB within
 
 ### Step 3: Platform-Specific Tips
 
-Based on the content type, add platform-specific recommendations:
+Based on content type, add targeted recommendations. See `../references/platform-rubrics.md` for detailed criteria.
 
 | Content Type | Primary Platform | Key Optimization |
 |-------------|-----------------|-----------------|
@@ -164,7 +166,7 @@ Based on the content type, add platform-specific recommendations:
 
 ### Step 4: Schema Recommendations
 
-Based on content, suggest JSON-LD to add:
+Based on content, suggest JSON-LD. See `../references/schema-templates.md` for ready-to-paste templates.
 
 1. **Always**: Article + Author with `sameAs` and `knowsAbout`
 2. **If how-to**: Keep HowTo schema (still useful for AI even without rich results)
@@ -176,10 +178,10 @@ Based on content, suggest JSON-LD to add:
 Output the optimized content with inline comments marking changes:
 
 ```markdown
-<!-- GEO: Rewritten for answer-first pattern. Score: 45→78 -->
+<!-- GEO: Rewritten for answer-first pattern. Score: 45->78 -->
 Content delivery networks (CDNs) are distributed server systems...
 
-<!-- GEO: Added statistics. Score: 30→65 -->
+<!-- GEO: Added statistics. Score: 30->65 -->
 According to Cloudflare's 2025 State of the Internet report...
 ```
 
@@ -199,7 +201,7 @@ When optimizing a file, generate two outputs:
 **Blocks improved:** X of Y
 
 ### Changes Made
-1. [Section name]: [What changed] — Score: XX→XX
+1. [Section name]: [What changed] -- Score: XX->XX
 2. ...
 
 ### Remaining Opportunities
@@ -225,20 +227,6 @@ When chained from `content-creator`:
 4. Adds schema recommendations
 5. Returns the GEO-optimized version
 
-The user doesn't need to run both manually. Suggest this chain when content is being created:
+Suggest this chain when content is being created:
 
 > "Draft is ready. Run `/geo-optimize` to check AI citability before publishing?"
-
----
-
-## Quick Reference: What AI Platforms Want
-
-| Platform | Biggest Factor | Content Tip |
-|----------|---------------|-------------|
-| Google AIO | Already ranking top-10 | Optimize for traditional SEO first, then add Q&A structure |
-| ChatGPT | Entity recognition | Ensure Wikipedia/Wikidata presence, use sameAs in schema |
-| Perplexity | Community validation | Write content that gets discussed on Reddit. Include original data. |
-| Gemini | Google ecosystem | YouTube video + Google Business Profile + complete Schema.org |
-| Copilot | Bing optimization | IndexNow, strong meta descriptions, LinkedIn presence |
-
-**Universal rule**: 11% of domains are cited by BOTH ChatGPT and Google AIO for the same query. Platform-specific optimization is not optional.

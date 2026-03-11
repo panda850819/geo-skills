@@ -4,8 +4,8 @@ description: >
   AI citability scoring for web content. Use when analyzing how likely AI systems will
   cite or quote passages from a page. Triggers on "citability", "citation readiness",
   "passage scoring", "content citability", "will AI cite this", "how citable is this".
-  Scores on 5 dimensions (answer quality, self-containment, structure, stats density,
-  uniqueness) with rewrite suggestions. Works standalone or as part of geo-audit.
+  Scores on 5 dimensions with block-level rewrite suggestions. Works standalone or as
+  part of geo-audit.
 model: sonnet
 allowed-tools:
   - Read
@@ -20,30 +20,6 @@ allowed-tools:
 
 > Score content for AI citation readiness. How extractable and quotable are your passages?
 
-## References
-
-For platform-specific optimization criteria, AI crawler lists, and schema strategy (not duplicated in this skill):
-
-```
-../references/geo-methodology.md
-```
-
-Resolve relative to this SKILL.md's parent directory. If this skill is at `~/.skm/cache/geo/packs/geo/geo-citability/SKILL.md`, the reference is at `~/.skm/cache/geo/packs/geo/references/geo-methodology.md`.
-
-## Core Insight
-
-AI models cite passages that are **extractable** — self-contained, fact-rich, answer-first blocks that make sense without surrounding context. Research (Princeton, Georgia Tech, IIT Delhi 2024) found GEO-optimized content achieves 30-115% higher visibility in AI responses.
-
-Key finding: AI systems preferentially cite passages that are:
-- **134-167 words** long (optimal extraction length)
-- **Self-contained** (understandable without context)
-- **Fact-rich** (specific statistics, dates, named entities)
-- **Answer-first** (direct answer in first 1-2 sentences)
-
-This is fundamentally different from traditional SEO copywriting. GEO optimizes for **extractability**, not keyword density.
-
----
-
 ## Usage
 
 ```
@@ -55,101 +31,42 @@ Also callable from `geo-audit` as part of the full audit flow.
 
 ---
 
-## Scoring Rubric (0-100)
+## References
 
-### Category 1: Answer Block Quality (30%)
+Read `../references/citability-rubrics.md` before scoring. It contains the complete 5-dimension rubrics with score bands, detection patterns, examples, and AI system citation preferences.
 
-Does content contain clear, quotable answer passages?
+Resolve relative to this SKILL.md's parent directory.
 
-| Score | Criteria |
-|-------|---------|
-| 90-100 | Every section opens with 1-2 sentence direct answer. Uses "X is..." patterns. First 40-60 words stand alone. |
-| 70-89 | Most sections have clear answer openings. Some definition patterns. |
-| 50-69 | Some answer-like openings but many bury the answer mid-paragraph. |
-| 30-49 | Answers generally buried. Narrative-driven, not answer-driven. |
-| 0-29 | No identifiable answer blocks. AI would struggle to extract quotable passages. |
+---
 
-**Detection patterns:**
-- Definition: "X is [definition]" / "X refers to [explanation]"
-- Quantified: "The average cost of X is $Y"
-- Comparison: "X differs from Y in three ways: [list]"
-- Attribution: "According to [Source], [claim]"
+## Core Insight
 
-**High-citability example:**
-> Content delivery networks (CDNs) are distributed server systems that cache and serve web content from locations geographically close to end users. A CDN reduces latency by 50-70% on average by serving assets from edge servers rather than a single origin server. The three largest CDN providers as of 2025 are Cloudflare (serving approximately 20% of all websites), Amazon CloudFront, and Akamai Technologies.
+AI models cite passages that are **extractable** -- self-contained, fact-rich, answer-first blocks that make sense without surrounding context. GEO-optimized content achieves 30-115% higher visibility in AI responses (Princeton/Georgia Tech/IIT Delhi 2024).
 
-58 words. Self-contained. 3 data points. Definition pattern. Score: 85+.
+AI systems preferentially cite passages that are:
+- **134-167 words** long (optimal extraction length)
+- **Self-contained** (understandable without context)
+- **Fact-rich** (specific statistics, dates, named entities)
+- **Answer-first** (direct answer in first 1-2 sentences)
 
-**Low-citability example:**
-> If you've ever wondered why some websites load faster than others, the answer might surprise you. There's this amazing technology that has been around for a while now. Let me explain how it works and why you should care about it for your business.
+---
 
-52 words. Not self-contained (no topic named). 0 facts. No definition. Score: 15-.
+## Scoring Formula
 
-### Category 2: Passage Self-Containment (25%)
+```
+Block_Score = (AnswerQuality * 0.30) + (SelfContain * 0.25)
+            + (Structure * 0.20) + (StatsDensity * 0.15) + (Uniqueness * 0.10)
+```
 
-Can passages be extracted and understood without surrounding context?
+| Dimension | Weight | What It Measures |
+|-----------|--------|-----------------|
+| Answer Block Quality | 30% | Clear, quotable answer passages with definition patterns |
+| Self-Containment | 25% | Passages understandable without surrounding context |
+| Structural Readability | 20% | Heading hierarchy, paragraph length, tables/lists |
+| Statistical Density | 15% | Specific data points with named sources |
+| Uniqueness & Original Data | 10% | Information AI cannot find elsewhere |
 
-| Score | Criteria |
-|-------|---------|
-| 90-100 | 80%+ blocks fully self-contained. Each names its subject. No pronoun reliance. |
-| 70-89 | 60-79% self-contained. Most name their subject. Occasional pronoun references. |
-| 50-69 | 40-59% self-contained. Mixed explicit subjects and pronouns. |
-| 30-49 | Heavy pronoun reliance. Most passages need surrounding text. |
-| 0-29 | Continuous narrative. Extracting any paragraph loses meaning. |
-
-**Checklist per passage:**
-1. Names the subject explicitly (not "it", "this", "they")?
-2. Main point understandable reading ONLY this passage?
-3. Contains at least one fact, statistic, or named entity?
-4. Between 50-200 words?
-5. Avoids starting with conjunctions implying prior context ("But", "However")?
-
-### Category 3: Structural Readability (20%)
-
-Formatting that helps AI parse and segment content.
-
-| Score | Criteria |
-|-------|---------|
-| 90-100 | Clean H1>H2>H3 hierarchy. Question headings. Short paragraphs (2-4 sentences). Tables for comparisons. Lists for processes. |
-| 70-89 | Good hierarchy with minor skips. Some question headings. Mostly short paragraphs. |
-| 50-69 | Inconsistent hierarchy. Few question headings. Mixed paragraph lengths. |
-| 30-49 | Minimal structure. Long paragraphs dominate. |
-| 0-29 | No heading structure. Wall-of-text. |
-
-**Best practices:**
-- Question headings ("What is X?" / "How does X work?") map directly to AI queries
-- 2-4 sentences per paragraph — AI parses short paragraphs more reliably
-- Tables for 3+ item comparisons — AI extracts table data with high accuracy
-- Bold first use of key terms — aids AI entity recognition
-
-### Category 4: Statistical Density (15%)
-
-Specific, verifiable data points that AI prioritizes when selecting citation sources.
-
-| Score | Criteria |
-|-------|---------|
-| 90-100 | 5+ statistics per 500 words. Named sources. Exact numbers. |
-| 70-89 | 3-4 per 500 words. Most sourced. Mostly specific. |
-| 50-69 | 1-2 per 500 words. Some sourced. |
-| 30-49 | <1 per 500 words. Few sources. Vague quantifiers. |
-| 0-29 | No statistics. All vague ("many", "most", "a lot"). |
-
-**Counts as statistic:** "73% of marketers report...", "$4,500/month", "6-8 weeks", "According to 2025 HubSpot Report..."
-**Does NOT count:** "Many companies...", "A significant percentage...", "Studies show..." (unnamed)
-
-### Category 5: Uniqueness & Original Data (10%)
-
-Information AI can't find elsewhere — making your content a necessary citation source.
-
-| Score | Criteria |
-|-------|---------|
-| 90-100 | First-party research, proprietary data, original surveys. |
-| 70-89 | Original insights or unique analysis of existing data. |
-| 50-69 | Synthesizes existing info with some unique commentary. |
-| 30-49 | Largely derivative. Restates common knowledge. |
-| 0-29 | Entirely derivative. Available verbatim on higher-authority sources. |
-
-**Signals:** "Our analysis found...", "We surveyed N professionals...", custom charts, case studies with named outcomes, original frameworks.
+See `../references/citability-rubrics.md` for per-dimension score bands (0-100), detection patterns, and examples.
 
 ---
 
@@ -172,10 +89,7 @@ Split at each H2/H3. For each block, record:
 
 ### Step 3: Score Each Block
 
-```
-Block_Score = (AnswerQuality * 0.30) + (SelfContain * 0.25)
-            + (Structure * 0.20) + (StatsDensity * 0.15) + (Uniqueness * 0.10)
-```
+Apply the 5-dimension rubrics from `../references/citability-rubrics.md` to each block. Calculate weighted block score.
 
 ### Step 4: Page-Level Score
 
@@ -186,7 +100,7 @@ Block_Score = (AnswerQuality * 0.30) + (SelfContain * 0.25)
 ### Step 5: Rewrite Suggestions
 
 For each block scoring below 60:
-1. Identify primary weakness
+1. Identify primary weakness (buried answer, no facts, poor structure, context-dependent)
 2. Propose rewritten opening using answer-first / definition pattern
 3. Suggest specific statistics or facts to add
 4. Recommend structural improvements (add table, split paragraph, add list)
@@ -216,31 +130,25 @@ Generate `GEO-CITABILITY-SCORE.md`:
 | **Overall** | | | **XX/100** |
 
 ## Strongest Blocks
-### 1. "[Heading]" — Score: XX/100
+### 1. "[Heading]" -- Score: XX/100
 > [First 2 sentences]
 **Why it works:** [Explanation]
 
 ## Weakest Blocks (Rewrite Priority)
-### 1. "[Heading]" — Score: XX/100
+### 1. "[Heading]" -- Score: XX/100
 **Current:** > [First 2 sentences]
 **Problem:** [Specific issue]
 **Suggested rewrite:** > [Rewritten opening]
 **Improvements:** - [Add table] - [Include statistic about...]
 
 ## Quick Wins
-1. [Recommendation] — Expected lift: +X points
+1. [Recommendation] -- Expected lift: +X points
+
+## Per-Section Scores
+| Section Heading | Words | Answer | Self-Cont | Structure | Stats | Unique | Overall |
+|-----------------|-------|--------|-----------|-----------|-------|--------|---------|
+| [H2 heading] | [N] | [X] | [X] | [X] | [X] | [X] | [X] |
 ```
-
----
-
-## AI System Citation Preferences
-
-| AI System | Preference |
-|-----------|-----------|
-| ChatGPT Search | Explicit definitions, named sources, recent dates. Cites 2-4 sources. |
-| Perplexity | Fact-dense with statistics. Cites 4-8 sources. Values recency. |
-| Gemini (AIO) | Concise answer blocks (40-60 words). Needs top-10 organic ranking. |
-| Copilot | High-authority domains, clear factual claims. |
 
 ---
 

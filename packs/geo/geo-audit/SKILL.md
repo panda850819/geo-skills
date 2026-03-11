@@ -38,13 +38,13 @@ Each subagent reads specific references before scoring:
 
 | Agent | Must Read Before Scoring |
 |-------|-------------------------|
-| Agent 1: AI Visibility | `../references/citability-rubrics.md`, `../references/brand-authority.md` |
+| Agent 1: AI Visibility + Brand Authority | `../references/citability-rubrics.md`, `../references/brand-authority.md` |
 | Agent 2: Platform | `../references/platform-rubrics.md` |
 | Agent 3: Technical | `../references/technical-scoring.md` |
 | Agent 4: Content | `../references/eeat-content.md` |
 | Agent 5: Schema | `../references/schema-templates.md` |
 
-For Phase 3 (recommendations), read `../references/action-playbook.md` to generate specific, actionable improvement steps with effort/impact/timeline for each finding.
+For recommendations, read `../references/actions-content.md`, `actions-technical.md`, or `actions-growth.md` based on the finding category.
 
 Resolve all paths relative to this SKILL.md's parent directory.
 
@@ -73,7 +73,7 @@ Context to include in each agent prompt:
 Spawn 5 agents simultaneously:
 
 ```
-Agent 1: AI Visibility   -> Citability scoring + AI crawler access + brand mentions
+Agent 1: AI Visibility + Brand Authority -> Citability scoring + AI crawler access + brand mentions
 Agent 2: Platform         -> Per-platform optimization (AIO, ChatGPT, Perplexity, Gemini, Copilot)
 Agent 3: Technical        -> SSR, Core Web Vitals, crawlability, security, mobile
 Agent 4: Content          -> E-E-A-T assessment, content quality, freshness
@@ -99,25 +99,13 @@ Agent 5: Schema           -> JSON-LD detection, validation, sameAs audit, genera
 
 ## Composite GEO Score (0-100)
 
-| Category | Weight | Subagent |
-|----------|--------|----------|
-| AI Citability & Visibility | 25% | Agent 1 |
-| Brand Authority Signals | 20% | Agent 1 |
-| Content Quality & E-E-A-T | 20% | Agent 4 |
-| Technical Foundations | 15% | Agent 3 |
-| Structured Data | 10% | Agent 5 |
-| Platform Optimization | 10% | Agent 2 |
-
-```
-GEO_Score = (Citability * 0.25) + (Brand * 0.20) + (Content * 0.20)
-          + (Technical * 0.15) + (Schema * 0.10) + (Platform * 0.10)
-```
+Calculate the composite GEO Score using the weights and formula in `../references/geo-methodology.md` Section 7.
 
 ---
 
 ## Subagent Instructions
 
-### Agent 1: AI Visibility
+### Agent 1: AI Visibility + Brand Authority
 
 Read `../references/citability-rubrics.md` for the 5-dimension rubrics (answer quality 30%, self-containment 25%, structure 20%, stats 15%, uniqueness 10%).
 

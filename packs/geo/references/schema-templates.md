@@ -177,135 +177,28 @@ The Author schema is one of the strongest E-E-A-T signals for AI platforms.
 }
 ```
 
-### Product (for e-commerce)
+### Product (E-commerce)
 
-**Required:**
-- `name`, `description`, `image`
-- `offers`: Offer with price, priceCurrency, availability
-- `brand`: Brand schema
-- `sku` or `gtin`/`mpn`
+Required: name, description, image, offers (price, priceCurrency, availability), brand, sku/gtin
+Recommended for GEO: aggregateRating, review, category, material/weight/dimensions
 
-**Recommended for GEO:**
-- `aggregateRating`: AggregateRating
-- `review`: Array of individual reviews
-- `category`: Product category
-- `material`, `weight`, `width`, `height` (where applicable)
+Generate complete JSON-LD from these properties using the Organization template pattern.
 
-**Template:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Product Name",
-  "description": "Clear product description with key features.",
-  "image": "https://example.com/images/product.jpg",
-  "brand": {"@type": "Brand", "name": "Brand Name"},
-  "sku": "SKU-12345",
-  "offers": {
-    "@type": "Offer",
-    "price": "99.99",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "url": "https://example.com/products/product-name"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.5",
-    "reviewCount": "127"
-  }
-}
-```
-
-### LocalBusiness (physical locations)
+### LocalBusiness (Physical Locations)
 
 Extends Organization. Critical for local AI search results and Google Gemini.
 
-**Additional required:**
-- `address`: Full PostalAddress
-- `telephone`: Phone number
-- `openingHoursSpecification`: Operating hours
+Required: name, url, telephone, address (PostalAddress), openingHoursSpecification
+Recommended for GEO: geo (GeoCoordinates with latitude/longitude), priceRange, aggregateRating, review, hasMap, sameAs
 
-**Recommended for GEO:**
-- `geo`: GeoCoordinates (latitude, longitude)
-- `priceRange`: Price indicator
-- `aggregateRating`: AggregateRating
-- `review`: Array of Review schemas
-- `hasMap`: URL to Google Maps
+Generate complete JSON-LD from these properties using the Organization template pattern.
 
-**Template:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://example.com/#localbusiness",
-  "name": "Business Name",
-  "url": "https://example.com",
-  "telephone": "+1-555-555-5555",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "123 Main St",
-    "addressLocality": "City",
-    "addressRegion": "State",
-    "postalCode": "12345",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "40.7128",
-    "longitude": "-74.0060"
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "09:00",
-      "closes": "17:00"
-    }
-  ],
-  "priceRange": "$$",
-  "sameAs": ["https://www.linkedin.com/company/...", "https://www.youtube.com/@..."]
-}
-```
+### SoftwareApplication (SaaS)
 
-### SoftwareApplication (for SaaS)
+Required: name, description, applicationCategory, operatingSystem, offers (price, priceCurrency)
+Recommended for GEO: aggregateRating, featureList (strong citation signal), screenshot, softwareVersion, releaseNotes
 
-**Required:**
-- `name`, `description`
-- `applicationCategory`: e.g., "BusinessApplication"
-- `operatingSystem`: Supported platforms
-- `offers`: Pricing
-
-**Recommended for GEO:**
-- `aggregateRating`: User ratings
-- `featureList`: Array of features (strong citation signal)
-- `screenshot`: Screenshots
-- `softwareVersion`: Current version
-- `releaseNotes`: Link to changelog
-
-**Template:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "App Name",
-  "description": "What the software does.",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web, iOS, Android",
-  "offers": {
-    "@type": "Offer",
-    "price": "29",
-    "priceCurrency": "USD",
-    "priceValidUntil": "2026-12-31"
-  },
-  "featureList": ["Feature 1", "Feature 2", "Feature 3"],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.7",
-    "reviewCount": "542"
-  },
-  "softwareVersion": "3.2.1"
-}
-```
+Generate complete JSON-LD from these properties using the Organization template pattern.
 
 ### WebSite + SearchAction (sitelinks search box)
 
@@ -457,3 +350,5 @@ Flag any deprecated schemas found and recommend replacements.
 | Valid JSON + valid Schema.org types | 10 | 10 if no errors, 5 if minor issues, 0 if major errors |
 | knowsAbout property on Organization/Person | 5 | 5 if present with 3+ topics, 0 if missing |
 | No deprecated schemas present | 5 | 5 if clean, 0 if deprecated schemas found |
+
+For implementation guides: see `actions-technical.md`.

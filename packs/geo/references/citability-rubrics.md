@@ -77,7 +77,7 @@ Can individual passages be extracted and understood without needing the surround
 1. Does the passage explicitly name the subject (not "it," "this," "they")?
 2. Can someone understand the main point reading ONLY this passage?
 3. Does the passage contain at least one specific fact, statistic, or named entity?
-4. Is the passage between 50-200 words (the optimal extraction length)?
+4. Is the passage between 50-200 words (acceptable extraction range; optimal is 134-167 words)?
 5. Does the passage avoid starting with conjunctions ("But," "However," "And") that imply prior context?
 
 ---
@@ -177,11 +177,6 @@ Whether the content provides information that AI systems cannot find elsewhere, 
 
 ---
 
-## Key Research Data
+For key research data and citations, see `geo-methodology.md` Research Citations.
 
-- **Optimal length for AI citation:** 134-167 words (Bortolato 2025 analysis of AI Overview passages)
-- **Definition patterns increase citation rate by:** 2.1x (Georgia Tech 2024)
-- **Adding statistics to passages increases citation by:** 40% (Princeton GEO study 2024)
-- **Adding quotations from authorities increases citation by:** 115% in certain categories (IIT Delhi 2024)
-- **Fluency optimization increases visibility by:** 30% on average across all query types
-- **Content with source citations is cited:** 20-25% more often by Perplexity and ChatGPT
+For improvement actions: see `actions-content.md`.

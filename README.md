@@ -27,7 +27,9 @@ packs/geo/
     ├── schema-templates.md     # JSON-LD templates + sameAs strategy
     ├── technical-scoring.md    # 8-category technical SEO (100pts)
     ├── eeat-content.md         # E-E-A-T 4x25pts + content quality metrics
-    └── action-playbook.md      # Concrete actions to improve scores (tools, effort, timeline)
+    ├── actions-content.md      # Citability + E-E-A-T improvement actions
+    ├── actions-technical.md    # Crawler, schema, SSR, CWV fix guides
+    └── actions-growth.md       # Brand authority, platform onboarding, monitoring
 ```
 
 All skills reference `../references/` relative to their SKILL.md location.

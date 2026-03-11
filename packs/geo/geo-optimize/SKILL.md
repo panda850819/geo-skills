@@ -43,12 +43,14 @@ Read these before optimizing:
 
 | Reference | When to Read |
 |-----------|-------------|
+| `../references/geo-methodology.md` | Core thesis, composite weights, crawler lists, severity levels |
 | `../references/citability-rubrics.md` | Before scoring blocks on the 5 dimensions |
 | `../references/eeat-content.md` | When assessing E-E-A-T signals and content quality |
 | `../references/schema-templates.md` | When generating schema recommendations |
 | `../references/platform-rubrics.md` | When adding platform-specific tips |
+| `../references/brand-authority.md` | When assessing brand presence across platforms |
 
-For specific improvement actions with tools and effort estimates, see `../references/action-playbook.md`.
+For specific improvement actions with tools and effort estimates, see `../references/actions-content.md`, `actions-technical.md`, or `actions-growth.md`.
 
 Resolve all paths relative to this SKILL.md's parent directory.
 

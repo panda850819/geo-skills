@@ -49,21 +49,9 @@ Technical SEO forms the foundation of both traditional search visibility and AI 
 - Verify XML sitemap is referenced: `Sitemap: https://[domain]/sitemap.xml`
 
 ### 1.2 AI Crawler Access (5 pts) — CRITICAL FOR GEO
-Check robots.txt for directives targeting AI crawlers:
+Check robots.txt for directives targeting AI crawlers.
 
-| Crawler | User-Agent | Platform |
-|---------|-----------|---------|
-| GPTBot | GPTBot | ChatGPT / OpenAI |
-| Google-Extended | Google-Extended | Gemini / Google AI training |
-| Googlebot | Googlebot | Google Search + AI Overviews |
-| Bingbot | bingbot | Bing Copilot + ChatGPT (via Bing) |
-| PerplexityBot | PerplexityBot | Perplexity AI |
-| ClaudeBot | ClaudeBot | Anthropic Claude |
-| Amazonbot | Amazonbot | Alexa / Amazon AI |
-| CCBot | CCBot | Common Crawl (used by many AI models) |
-| FacebookBot | FacebookExternalHit | Meta AI |
-| Bytespider | Bytespider | TikTok / ByteDance AI |
-| Applebot-Extended | Applebot-Extended | Apple Intelligence |
+For the complete AI crawler list with user-agent strings, see `geo-methodology.md` Section 2. Check all 14 crawlers listed there.
 
 **Scoring for AI crawler access:**
 - All major AI crawlers allowed: 5 points
@@ -369,3 +357,5 @@ ChatGPT uses Bing's index. Bing Copilot uses Bing's index. Faster Bing indexing 
 | Server-Side Rendering | 15 |
 | Page Speed & Server | 15 |
 | **Total** | **100** |
+
+For fix instructions: see `actions-technical.md`.

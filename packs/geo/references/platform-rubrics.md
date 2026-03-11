@@ -8,11 +8,10 @@
 
 ### How AIO Selects Sources
 
-- 92% of AIO citations come from pages already ranking in the **top 10 organic results** — traditional SEO is the gateway
-- 47% of citations come from pages ranking **below position 5** — AIO has its own selection logic favoring clarity and directness over raw rank
-- AIO strongly favors pages with **clean structure, direct answers, and scannable formatting**
+- 92% of AIO citations come from pages ranking in the **top 10 organic results**
+- 47% of citations come from pages ranking **below position 5** — AIO favors clarity over raw rank
 - Featured snippet optimization has ~70% overlap with AIO optimization
-- AIO prefers **concise, factual, unambiguous answers** — hedging and filler reduce citation probability
+- AIO prefers **concise, factual, unambiguous answers** — hedging reduces citation probability
 
 ### Optimization Checklist
 
@@ -49,11 +48,9 @@
 ### How ChatGPT Selects Sources
 
 - Uses **Bing's search index** as its foundation (not Google)
-- Top citation sources by domain share: **Wikipedia (47.9%)**, Reddit (11.3%), YouTube, major news outlets
-- ChatGPT heavily weights **entity recognition** — if your brand exists as a structured entity (Wikipedia, Wikidata, Crunchbase), it is far more likely to be cited
-- Prefers **authoritative, well-established sources** over new or niche sites
-- Longer, more comprehensive articles get cited more often than short pieces
-- ChatGPT tends to cite **the most canonical source** for a claim rather than the original
+- Top citation sources: **Wikipedia (47.9%)**, Reddit (11.3%), YouTube, major news outlets
+- Heavily weights **entity recognition** — structured entities (Wikipedia, Wikidata, Crunchbase) are far more likely to be cited
+- Prefers comprehensive, authoritative sources; tends to cite the most canonical source for a claim
 
 ### Optimization Checklist
 
@@ -89,11 +86,9 @@
 ### How Perplexity Selects Sources
 
 - Top citation sources: **Reddit (46.7%)**, Wikipedia, YouTube, major publications
-- Perplexity places the **heaviest emphasis on community validation** of all AI search platforms
-- Strongly favors **discussion threads** where claims are debated, validated, or expanded by multiple participants
+- Heaviest emphasis on **community validation** — favors discussion threads with multi-participant debate
 - Prefers recent content — publication date is a strong ranking signal
-- Cites **multiple sources per answer** (typically 5-15), so there is more opportunity for mid-authority sites to appear
-- Uses its own crawling infrastructure in addition to search APIs
+- Cites **5-15 sources per answer**, more opportunity for mid-authority sites
 
 ### Optimization Checklist
 
@@ -128,12 +123,9 @@
 
 ### How Gemini Selects Sources
 
-- Uses **Google's search index** plus strong weighting toward **Google-owned properties**
-- YouTube content is weighted significantly more heavily than in standard Google Search
-- Google Business Profile data is directly accessible to Gemini
-- Gemini uses Google's Knowledge Graph directly — entity presence in Knowledge Graph is a major advantage
-- Structured data (Schema.org) is consumed directly by Gemini for entity understanding
-- Gemini multi-modal: can reference images, videos, and text together
+- Uses **Google's search index** with strong weighting toward **Google-owned properties** (YouTube, GBP)
+- Google Knowledge Graph entity presence is a major advantage; Schema.org consumed directly
+- Multi-modal: can reference images, videos, and text together
 
 ### Optimization Checklist
 
@@ -168,11 +160,10 @@
 
 ### How Copilot Selects Sources
 
-- Uses **Bing's search index** (shared infrastructure with ChatGPT but different ranking/selection)
-- Supports **IndexNow protocol** for near-instant indexing of new and updated content
-- Copilot tends to cite **fewer sources per answer** (typically 3-5) but gives more prominent attribution
-- Microsoft ecosystem integration: LinkedIn, GitHub, Microsoft Learn content is weighted
-- Copilot prefers pages with clear, structured markup and fast load times
+- Uses **Bing's search index** (shared with ChatGPT but different ranking/selection)
+- Supports **IndexNow protocol** for near-instant indexing
+- Cites **3-5 sources per answer** with prominent attribution; Microsoft ecosystem (LinkedIn, GitHub) is weighted
+- Prefers clear structured markup and fast load times
 
 ### Optimization Checklist
 
@@ -229,6 +220,10 @@
 
 | Score | Status |
 |-------|--------|
-| 70-100 | Strong |
-| 40-69 | Moderate |
-| 0-39 | Weak |
+| 85-100 | Dominant |
+| 70-84 | Strong |
+| 50-69 | Moderate |
+| 30-49 | Weak |
+| 0-29 | Minimal |
+
+For onboarding checklists: see `actions-growth.md`.

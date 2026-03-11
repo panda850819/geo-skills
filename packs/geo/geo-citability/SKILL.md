@@ -35,7 +35,7 @@ Also callable from `geo-audit` as part of the full audit flow.
 
 Read `../references/citability-rubrics.md` before scoring. It contains the complete 5-dimension rubrics with score bands, detection patterns, examples, and AI system citation preferences.
 
-For rewrite suggestions with specific improvement actions, see `../references/action-playbook.md` Section 1 (Citability Quick Wins).
+For rewrite suggestions with specific improvement actions, see `../references/actions-content.md`.
 
 Resolve all paths relative to this SKILL.md's parent directory.
 
@@ -154,11 +154,4 @@ Generate `GEO-CITABILITY-SCORE.md`:
 
 ---
 
-## Reference Data
-
-- Optimal AI citation length: 134-167 words (Bortolato 2025)
-- Definition patterns increase citation: 2.1x (Georgia Tech 2024)
-- Adding statistics increases citation: 40% (Princeton 2024)
-- Adding authority quotations: +115% in some categories (IIT Delhi 2024)
-- Fluency optimization: +30% visibility average
-- Source citations: +20-25% citation rate by Perplexity and ChatGPT
+Key research data: see `../references/geo-methodology.md` Research Citations.

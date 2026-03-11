@@ -192,9 +192,9 @@ AI platforms extract content at the paragraph level. Each paragraph should be a 
 
 ## AI Content Assessment
 
-### AI-Generated Content Policy
+### AI Content Policy
 
-AI-generated content is **acceptable** per Google's guidance (March 2024) as long as it demonstrates genuine E-E-A-T signals and has human oversight. The concern is not HOW content is created but WHETHER it provides value.
+AI-generated content is acceptable per Google's guidance (March 2024) if it demonstrates genuine E-E-A-T signals with human oversight. Focus is on value delivered, not production method.
 
 ### Signs of Low-Quality AI Content (flag these)
 
@@ -275,3 +275,5 @@ Topical authority measures whether a site comprehensively covers a topic rather 
 | Developing | 10-20 pages with some clustering | +5 bonus |
 | Emerging | 5-10 pages on topic, limited clustering | +0 |
 | Thin | < 5 pages, no clustering | -5 penalty |
+
+For improvement actions: see `actions-content.md`.

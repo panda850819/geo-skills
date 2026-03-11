@@ -58,11 +58,9 @@ Brand_Authority_Score = (YouTube * 0.25) + (Reddit * 0.25) + (Wikipedia * 0.20) 
 
 ### Why YouTube Matters Most
 
-- YouTube is the second-largest search engine and the largest video platform globally (2.5B+ monthly users).
 - AI training datasets heavily incorporate YouTube transcripts, descriptions, and metadata.
-- Google's Gemini and AI Overviews directly reference YouTube content.
-- Perplexity and ChatGPT both index and cite YouTube video content.
-- YouTube transcripts are particularly valuable because they contain natural language mentions in conversational context.
+- Google's Gemini and AI Overviews directly reference YouTube content; Perplexity and ChatGPT also index and cite it.
+- YouTube transcripts contain natural language mentions in conversational context, making them high-signal for AI citation.
 
 ### What to Check
 
@@ -90,11 +88,9 @@ Brand_Authority_Score = (YouTube * 0.25) + (Reddit * 0.25) + (Wikipedia * 0.20) 
 
 ### Why Reddit Matters
 
-- Reddit is one of the most heavily indexed platforms in AI training data (confirmed in Google's $60M/year Reddit licensing deal, 2024).
-- AI systems heavily weight Reddit for product recommendations, comparisons, and user sentiment.
-- "Reddit" is appended to an estimated 10-15% of Google searches by users seeking authentic opinions.
-- Perplexity frequently cites Reddit threads as sources.
-- ChatGPT and Claude both reference Reddit discussions when answering product/service questions.
+- Google's $60M/year Reddit licensing deal (2024) confirms heavy AI training data inclusion.
+- "Reddit" appended to ~10-15% of Google searches by users seeking authentic opinions.
+- Perplexity cites Reddit threads frequently; ChatGPT and Claude reference Reddit for product/service questions.
 
 ### What to Check
 
@@ -122,10 +118,9 @@ Brand_Authority_Score = (YouTube * 0.25) + (Reddit * 0.25) + (Wikipedia * 0.20) 
 
 ### Why Wikipedia Matters
 
-- Wikipedia is one of the highest-authority sources in AI training data. All major AI models have been trained on Wikipedia dumps.
-- AI systems use Wikipedia as a primary source for entity recognition — determining whether a brand is a "real" entity worth knowing about.
-- Wikidata provides machine-readable facts that AI models use for knowledge graph construction.
-- Having a Wikipedia page is a strong signal of notability.
+- All major AI models trained on Wikipedia dumps; primary source for entity recognition.
+- Wikidata provides machine-readable facts for AI knowledge graph construction.
+- Having a Wikipedia page is a strong signal of notability to AI systems.
 
 ### What to Check
 
@@ -187,8 +182,7 @@ Search `[brand name] site:wikipedia.org`
 
 ### Why LinkedIn Matters
 
-- LinkedIn content is increasingly indexed by AI systems for professional and B2B context.
-- Company LinkedIn pages and employee thought leadership posts build brand entity signals.
+- LinkedIn content increasingly indexed by AI systems for professional/B2B context and company entity signals.
 - AI models reference LinkedIn for company information, team credentials, and professional authority.
 
 ### What to Check
@@ -260,31 +254,4 @@ For Reddit and other discussion platforms, assess sentiment from most recent and
 | **Negative** | Complaints ("Avoid [brand]", "terrible support"), downvoted recommendations, negative comparisons |
 | **Mixed** | Combination of positive and negative. Note the ratio and primary themes. |
 
----
-
-## Platform-Specific Quick Wins
-
-**YouTube:**
-- Create a channel and upload 3-5 explainer videos about core topics.
-- Ensure brand name appears in video titles, descriptions, and spoken content.
-- Pursue guest appearances on relevant industry YouTube channels.
-- Create comparison or "alternatives" videos (these get cited by AI for comparison queries).
-
-**Reddit:**
-- Identify 3-5 subreddits where target audience is active.
-- Participate authentically (do not shill — Reddit communities detect and punish this).
-- Do an AMA if appropriate.
-- Monitor and respond to brand mentions.
-- Create genuinely helpful posts that naturally mention brand expertise.
-
-**Wikipedia:**
-- Hire a Wikipedia-knowledgeable consultant — do NOT edit your own article (conflict of interest).
-- Build notability through press coverage, academic citations, and industry recognition first.
-- Ensure Wikidata entry is complete even without a Wikipedia article.
-- Contribute to industry-relevant articles where brand can be naturally cited as a source.
-
-**LinkedIn:**
-- Optimize company page with complete information and regular posting.
-- Encourage leadership to post thought leadership content weekly.
-- Publish LinkedIn articles on topics where brand has unique expertise.
-- Engage with industry discussions to increase brand visibility.
+For building guides: see `actions-growth.md`.

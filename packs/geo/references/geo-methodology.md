@@ -12,16 +12,6 @@ Key data points:
 - Only 11% of domains are cited by both ChatGPT and Google AIO for the same query
 - GEO-optimized content: 30-115% higher visibility in AI responses (Princeton/Georgia Tech/IIT Delhi 2024)
 
-Market context (2025-2026):
-- GEO services market: $850M-$886M (2025), projected $7.3B by 2031 (34% CAGR)
-- AI-referred sessions growth: +527% (Jan-May 2025, SparkToro)
-- AI traffic conversion vs organic: 4.4x higher
-- Google AI Overviews reach: 1.5B users/month, 200+ countries
-- ChatGPT weekly active users: 900M+
-- Perplexity monthly queries: 500M+
-- Gartner: -50% traditional search traffic by 2028
-- Only 23% of marketers investing in GEO
-
 ---
 
 ## Composite GEO Score (0-100)
@@ -72,7 +62,7 @@ GEO_Score = (Citability * 0.25) + (Brand * 0.20) + (Content * 0.20)
 | GoogleOther | Google | Research + experimental features |
 | Applebot-Extended | Apple | Apple Intelligence (2B+ devices) |
 | Amazonbot | Amazon | Alexa + Amazon AI |
-| FacebookBot | Meta | Meta AI (3B+ app users) |
+| FacebookBot (Meta) | Meta | Meta AI (3B+ app users). Actual UA string: `facebookexternalhit` |
 
 ### Tier 3: Training-Only (Context-Dependent)
 
@@ -108,45 +98,15 @@ GEO_Score = (Citability * 0.25) + (Brand * 0.20) + (Content * 0.20)
 | GoogleOther | 2 | **ALLOW** | Reduced Google AI research inclusion |
 | Applebot-Extended | 2 | **ALLOW** | Not in Apple Intelligence features |
 | Amazonbot | 2 | **ALLOW** | Not in Alexa voice responses |
-| FacebookBot | 2 | **ALLOW** | Not accessible to Meta AI |
+| FacebookBot (Meta) | 2 | **ALLOW** | Not accessible to Meta AI. UA: `facebookexternalhit` |
 | CCBot | 3 | Context | No live search impact |
 | anthropic-ai | 3 | Context | No live search impact |
 | Bytespider | 3 | **BLOCK** | Minimal impact, aggressive crawling |
 | cohere-ai | 3 | Context | Minimal consumer impact |
 
-### robots.txt Template (Maximum AI Visibility)
+### robots.txt Template
 
-```
-User-agent: GPTBot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: Amazonbot
-Allow: /
-
-User-agent: FacebookBot
-Allow: /
-
-User-agent: Bytespider
-Disallow: /
-```
+For a complete robots.txt template with AI crawler directives, see `actions-technical.md`.
 
 ---
 
